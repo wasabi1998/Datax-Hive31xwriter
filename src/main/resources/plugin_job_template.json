@@ -1,0 +1,25 @@
+{
+    "name": "hive31xwriter",
+    "parameter": {
+        "defaultFS": "",
+        "fileType": "",
+        "path": "",
+        "fileName": "",
+        "column": [],
+        "writeMode": "",
+        "fieldDelimiter": "",
+        "compress": "",
+        "url": "",
+        "userName": "",
+        "password": "",
+        "dbName": "",
+        "tableName": "",
+        "parColumn": "",
+        "parName": "",
+        "hdfsUsername": "",
+        "hdfsGroupname": "",
+        "ugpMode": "",
+        "superUser": "",
+        "superGroup": ""
+    }
+}

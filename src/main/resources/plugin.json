@@ -1,0 +1,6 @@
+{
+    "name": "hive31xwriter",
+    "class": "com.alibaba.datax.plugin.writer.hive31xwriter.HiveWriter",
+    "description": "useScene: prod. mechanism: via FileSystem connect HDFS write data concurrent.",
+    "developer": "alibaba"
+}

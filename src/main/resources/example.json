@@ -1,0 +1,133 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 1
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "parameter": {
+            "column": [
+              "id",
+              "spu_id",
+              "price",
+              "sku_name",
+              "sku_desc",
+              "weight",
+              "tm_id",
+              "category3_id",
+              "sku_default_img",
+              "is_sale",
+              "create_time"
+            ],
+            "connection": [
+              {
+                "table": [
+                  "sku_info"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.0.23:5505/mall?useUnicode=true&characterEncoding=UTF-8"
+                ]
+              }
+            ],
+            "username": "root",
+            "password": "123456",
+            "splitPk": ""
+          },
+          "name": "mysqlreader"
+        },
+        "writer": {
+          "name": "hive31xwriter",
+          "parameter": {
+            "column": [
+              {
+                "type": "bigint",
+                "name": "id"
+              },
+              {
+                "type": "bigint",
+                "name": "spu_id"
+              },
+              {
+                "type": "string",
+                "name": "price"
+              },
+              {
+                "type": "string",
+                "name": "sku_name"
+              },
+              {
+                "type": "string",
+                "name": "sku_desc"
+              },
+              {
+                "type": "string",
+                "name": "weight"
+              },
+              {
+                "type": "bigint",
+                "name": "tm_id"
+              },
+              {
+                "type": "bigint",
+                "name": "category3_id"
+              },
+              {
+                "type": "string",
+                "name": "sku_default_img"
+              },
+              {
+                "type": "bigint",
+                "name": "is_sale"
+              },
+              {
+                "type": "string",
+                "name": "create_time"
+              }
+            ],
+            "writeMode": "append",
+            "fieldDelimiter": "\t",
+            "compress": "gzip",
+            "defaultFS": "hdfs://192.168.0.45:8020",
+            "fileType": "text",
+            "path": "/datasource/dev/test/sku_info/2022-10-13",
+            "fileName": "sku_info",
+            "hdfsUsername": "hive",
+            "hdfsGroupname": "hadoop",
+            "url": "jdbc:hive2://192.168.0.45:10000/dev",
+            //hive表的location
+            "locationPath": "/dev/test/sku_info",
+            "userName": "hive",
+            "password": "hive",
+            "dbName": "dev",
+            "tableName": "sku_info",
+            //hdfs目录和文件的权限，可以设置为all/a:777,read/r:644,write/w:622,execute/x:611
+            //read_write/rw:666,read_execute/rx:655,write_execute/wx:633,none:600
+            "ugoMode": "all",
+            "superUser": "hdfs",
+            "superGroup": "hadoop",
+            // tableType只支持partition和normal
+            "tableType": "partition",
+            //当tableType选择partition时，parColumn为必选项，支持多级分区。
+            //当tableType选择normal时，parColumn为可选项，设置与否不起作用。
+            "parColumn": [
+              {
+                "name": "year",
+                "type": "string",
+                "value": "2022"
+              },
+              {
+                "name": "month",
+                "type": "string",
+                "value": "10"
+              }
+            ]
+
+          }
+        }
+      }
+    ]
+  }
+}
